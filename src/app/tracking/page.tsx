@@ -81,46 +81,86 @@ function TrackingContent() {
         </p>
       </div>
 
-      {/* Search Input Box */}
+      {/* Search Input Box Card */}
       <div className="p-4 sm:p-8 rounded-3xl bg-white border border-[#E5E3D8] shadow-sm max-w-2xl mx-auto space-y-4">
-        <form onSubmit={handleSubmit} className="space-y-3">
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+        <form onSubmit={handleSubmit} className="space-y-4">
+          
+          {/* Label with Clear Context */}
+          <div className="flex items-center justify-between">
+            <label htmlFor="tracking-code-input" className="text-xs font-bold uppercase tracking-wider text-[#18221B] flex items-center gap-1.5">
+              <Scan className="w-3.5 h-3.5 text-[#C25E38]" />
+              <span>Kode Tiket Peminjaman</span>
+            </label>
+            <span className="text-[11px] text-[#8A968E] hidden xs:inline">
+              Format: LIB-XXXX-X
+            </span>
+          </div>
+
+          {/* Search Input & Button - Mobile Stacked, Desktop Row */}
+          <div className="flex flex-col md:flex-row items-stretch md:items-center gap-3">
             <div className="relative flex-1">
-              <Search className="w-4 sm:w-5 h-4 sm:h-5 text-[#8A968E] absolute left-3.5 sm:left-4 top-1/2 -translate-y-1/2" />
+              <Search className="w-4 sm:w-5 h-4 sm:h-5 text-[#8A968E] absolute left-3.5 sm:left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
               <input
+                id="tracking-code-input"
                 type="text"
                 required
                 value={code}
                 onChange={(e) => setCode(e.target.value.toUpperCase())}
-                placeholder="KODE TIKET (MISAL: LIB-7742-X)"
-                className="w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl bg-[#F8F7F2] border border-[#E5E3D8] text-[#18221B] font-mono-code font-bold tracking-wider placeholder-[#8A968E] text-xs sm:text-sm focus:outline-none focus:border-[#132E20] focus:bg-white transition-all"
+                placeholder="Contoh: LIB-7742-X"
+                className="w-full h-12 sm:h-13 pl-10 sm:pl-12 pr-10 rounded-xl sm:rounded-2xl bg-[#F8F7F2] border border-[#E5E3D8] text-[#18221B] font-mono-code font-bold tracking-wider placeholder-[#8A968E] text-xs sm:text-sm focus:outline-none focus:border-[#132E20] focus:bg-white focus:ring-2 focus:ring-[#132E20]/10 transition-all"
               />
+              {code && (
+                <button
+                  type="button"
+                  onClick={() => setCode('')}
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-xs font-semibold text-[#8A968E] hover:text-[#18221B] p-1"
+                  aria-label="Bersihkan input"
+                >
+                  ✕
+                </button>
+              )}
             </div>
+
             <button
               type="submit"
               disabled={isScanning || !code.trim()}
-              className="py-3 px-5 rounded-xl sm:rounded-2xl bg-[#132E20] hover:bg-[#0D2016] text-white font-bold text-xs flex items-center justify-center gap-2 transition-all disabled:opacity-50 active:scale-95 shadow-xs shrink-0"
+              className="w-full md:w-auto h-12 px-6 rounded-xl sm:rounded-2xl bg-[#132E20] hover:bg-[#0D2016] text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all disabled:opacity-40 disabled:cursor-not-allowed active:scale-[0.99] shadow-xs shrink-0 cursor-pointer"
             >
-              <span>{isScanning ? 'Mengecek...' : 'Lacak Tiket'}</span>
-              <ArrowRight className="w-4 h-4 text-emerald-300" />
+              {isScanning ? (
+                <>
+                  <span className="w-3.5 h-3.5 rounded-full border-2 border-white/30 border-t-white animate-spin" />
+                  <span>Mengecek...</span>
+                </>
+              ) : (
+                <>
+                  <span>Lacak Tiket</span>
+                  <ArrowRight className="w-4 h-4 text-emerald-300" />
+                </>
+              )}
             </button>
           </div>
 
           {/* Quick Demo Code Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 pt-2 text-xs">
-            <span className="text-[#8A968E] font-medium text-[11px] w-full sm:w-auto text-center sm:text-left">
-              Contoh kode:
+          <div className="pt-3 border-t border-[#F0EEE6] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <span className="text-[11px] font-semibold text-[#8A968E] uppercase tracking-wider shrink-0">
+              Contoh kode demo:
             </span>
-            {loanRequests.slice(0, 3).map((req) => (
-              <button
-                key={req.request_code}
-                type="button"
-                onClick={() => handleSampleClick(req.request_code)}
-                className="px-2.5 py-1 rounded-lg bg-[#F8F7F2] hover:bg-[#EAE7DC] text-[#18221B] border border-[#E5E3D8] font-mono-code text-[11px] sm:text-xs transition-colors"
-              >
-                {req.request_code} ({req.status})
-              </button>
-            ))}
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+              {loanRequests.slice(0, 3).map((req) => (
+                <button
+                  key={req.request_code}
+                  type="button"
+                  onClick={() => handleSampleClick(req.request_code)}
+                  className="px-2.5 py-1.5 rounded-lg bg-[#F8F7F2] hover:bg-[#EAE7DC] text-[#18221B] border border-[#E5E3D8] font-mono-code text-[11px] sm:text-xs transition-colors flex items-center gap-1.5 active:scale-95"
+                >
+                  <span>{req.request_code}</span>
+                  <span className={`w-1.5 h-1.5 rounded-full ${
+                    req.status === 'Approved' ? 'bg-emerald-500' :
+                    req.status === 'Borrowed' ? 'bg-sky-500' : 'bg-amber-500'
+                  }`} />
+                </button>
+              ))}
+            </div>
           </div>
         </form>
       </div>
