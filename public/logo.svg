@@ -1,0 +1,13 @@
+<svg width="220" height="48" viewBox="0 0 220 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="48" height="48" rx="12" fill="#132E20"/>
+  <rect x="2" y="2" width="44" height="44" rx="10" stroke="#F8F7F2" stroke-opacity="0.15" stroke-width="1.5"/>
+  <path d="M22 6h4v10l-2-1.5-2 1.5V6z" fill="#C25E38"/>
+  <path d="M24 35.5C20.5 33.2 14.5 33 11 34.5V17.5C14.5 16 20.5 16.2 24 18.5V35.5Z" fill="#F8F7F2"/>
+  <path d="M24 35.5C27.5 33.2 33.5 33 37 34.5V17.5C33.5 16 27.5 16.2 24 18.5V35.5Z" fill="#E8E4D5"/>
+  <path d="M24 18.5V36.5" stroke="#132E20" stroke-width="1.5" stroke-linecap="round"/>
+  <circle cx="37" cy="11" r="2.2" fill="#E8B931"/>
+  
+  <text x="60" y="27" font-family="'Newsreader', Georgia, serif" font-size="20" font-weight="700" fill="#18221B" letter-spacing="-0.5">NEO-PUSTAKA</text>
+  <circle cx="205" cy="23" r="3" fill="#C25E38"/>
+  <text x="61" y="40" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="500" fill="#8A968E" letter-spacing="1.5">ARSIP &amp; SIRKULASI</text>
+</svg>
