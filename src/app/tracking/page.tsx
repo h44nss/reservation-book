@@ -73,7 +73,7 @@ function TrackingContent() {
           <Scan className="w-3.5 h-3.5" />
           PELACAKAN TIKET RESMI
         </span>
-        <h1 className="font-serif-title text-3xl sm:text-5xl font-normal text-[#18221B]">
+        <h1 className="font-serif-title text-2xl sm:text-4xl lg:text-5xl font-normal text-[#18221B]">
           Pelacakan Status Peminjaman
         </h1>
         <p className="text-xs sm:text-sm text-[#57655B] max-w-md mx-auto leading-relaxed">
@@ -82,22 +82,24 @@ function TrackingContent() {
       </div>
 
       {/* Search Input Box */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E5E3D8] shadow-sm max-w-2xl mx-auto space-y-4">
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="relative flex items-center">
-            <Search className="w-5 h-5 text-[#8A968E] absolute left-4" />
-            <input
-              type="text"
-              required
-              value={code}
-              onChange={(e) => setCode(e.target.value.toUpperCase())}
-              placeholder="MASUKKAN KODE TIKET (MISAL: LIB-7742-X)"
-              className="w-full pl-12 pr-28 py-3.5 rounded-2xl bg-[#F8F7F2] border border-[#E5E3D8] text-[#18221B] font-mono-code font-bold tracking-wider placeholder-[#8A968E] text-sm focus:outline-none focus:border-[#132E20] focus:bg-white transition-all"
-            />
+      <div className="p-4 sm:p-8 rounded-3xl bg-white border border-[#E5E3D8] shadow-sm max-w-2xl mx-auto space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-3">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+            <div className="relative flex-1">
+              <Search className="w-4 sm:w-5 h-4 sm:h-5 text-[#8A968E] absolute left-3.5 sm:left-4 top-1/2 -translate-y-1/2" />
+              <input
+                type="text"
+                required
+                value={code}
+                onChange={(e) => setCode(e.target.value.toUpperCase())}
+                placeholder="KODE TIKET (MISAL: LIB-7742-X)"
+                className="w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl bg-[#F8F7F2] border border-[#E5E3D8] text-[#18221B] font-mono-code font-bold tracking-wider placeholder-[#8A968E] text-xs sm:text-sm focus:outline-none focus:border-[#132E20] focus:bg-white transition-all"
+              />
+            </div>
             <button
               type="submit"
               disabled={isScanning || !code.trim()}
-              className="absolute right-2 px-5 py-2.5 rounded-xl bg-[#132E20] hover:bg-[#0D2016] text-white font-bold text-xs flex items-center gap-1.5 transition-all disabled:opacity-50 active:scale-95 shadow-xs"
+              className="py-3 px-5 rounded-xl sm:rounded-2xl bg-[#132E20] hover:bg-[#0D2016] text-white font-bold text-xs flex items-center justify-center gap-2 transition-all disabled:opacity-50 active:scale-95 shadow-xs shrink-0"
             >
               <span>{isScanning ? 'Mengecek...' : 'Lacak Tiket'}</span>
               <ArrowRight className="w-4 h-4 text-emerald-300" />
@@ -105,14 +107,16 @@ function TrackingContent() {
           </div>
 
           {/* Quick Demo Code Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2 pt-1 text-xs">
-            <span className="text-[#8A968E] font-medium text-[11px]">Contoh kode tersedia:</span>
+          <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 pt-2 text-xs">
+            <span className="text-[#8A968E] font-medium text-[11px] w-full sm:w-auto text-center sm:text-left">
+              Contoh kode:
+            </span>
             {loanRequests.slice(0, 3).map((req) => (
               <button
                 key={req.request_code}
                 type="button"
                 onClick={() => handleSampleClick(req.request_code)}
-                className="px-2.5 py-1 rounded-lg bg-[#F8F7F2] hover:bg-[#EAE7DC] text-[#18221B] border border-[#E5E3D8] font-mono-code text-xs transition-colors"
+                className="px-2.5 py-1 rounded-lg bg-[#F8F7F2] hover:bg-[#EAE7DC] text-[#18221B] border border-[#E5E3D8] font-mono-code text-[11px] sm:text-xs transition-colors"
               >
                 {req.request_code} ({req.status})
               </button>

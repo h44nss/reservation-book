@@ -218,17 +218,17 @@ export default function BorrowPage() {
     <div className="min-h-screen flex flex-col bg-[#F8F7F2] text-[#18221B]">
       <Navbar />
 
-      <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 w-full pt-8 pb-24 space-y-8">
+      <main className="flex-1 max-w-4xl mx-auto px-3.5 sm:px-6 w-full pt-6 sm:pt-8 pb-24 space-y-6 sm:space-y-8">
         
         {submittedRequest ? (
           /* SUCCESS STATE */
-          <div className="space-y-6 pt-4">
+          <div className="space-y-6 pt-2 sm:pt-4">
             <div className="text-center space-y-2">
               <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-800 font-bold text-xs border border-emerald-200">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                 TIKET RESMI BERHASIL DITERBITKAN
               </span>
-              <h1 className="font-serif-title text-3xl sm:text-4xl font-normal text-[#18221B]">
+              <h1 className="font-serif-title text-2xl sm:text-4xl font-normal text-[#18221B]">
                 Peminjaman Anda Telah Terdaftar!
               </h1>
               <p className="text-xs sm:text-sm text-[#57655B] max-w-lg mx-auto leading-relaxed">
@@ -249,14 +249,14 @@ export default function BorrowPage() {
           </div>
         ) : (
           /* FORM STATE */
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             
             {/* Header */}
             <div className="pb-4 border-b border-[#E5E3D8]">
               <span className="text-xs font-bold uppercase tracking-widest text-[#C25E38]">
                 PROSEDUR CEPAT
               </span>
-              <h1 className="font-serif-title text-3xl sm:text-4xl font-normal text-[#18221B] mt-1">
+              <h1 className="font-serif-title text-2xl sm:text-4xl font-normal text-[#18221B] mt-1">
                 Formulir Peminjaman Koleksi
               </h1>
               <p className="text-xs sm:text-sm text-[#57655B] mt-1">
@@ -286,7 +286,7 @@ export default function BorrowPage() {
                 
                 {/* Left Column: Book Tray Review */}
                 <div className="lg:col-span-5 space-y-4">
-                  <div className="p-5 rounded-3xl bg-white border border-[#E5E3D8] shadow-xs space-y-4">
+                  <div className="p-4 sm:p-5 rounded-3xl bg-white border border-[#E5E3D8] shadow-xs space-y-4">
                     <div className="flex items-center justify-between pb-3 border-b border-[#F0EEE6]">
                       <span className="text-xs text-[#18221B] font-bold uppercase tracking-wider">
                         Buku yang Dipilih ({borrowTray.length})
@@ -352,7 +352,7 @@ export default function BorrowPage() {
                   <form
                     onSubmit={handleSubmit}
                     noValidate
-                    className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E5E3D8] shadow-sm space-y-5"
+                    className="p-4 sm:p-8 rounded-3xl bg-white border border-[#E5E3D8] shadow-sm space-y-5"
                   >
                     <h3 className="font-serif-title font-normal text-xl text-[#18221B]">
                       Data Pengajuan Peminjam

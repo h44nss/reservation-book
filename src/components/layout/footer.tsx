@@ -11,8 +11,8 @@ export function Footer() {
 
   return (
     <footer className="mt-auto border-t border-[#E5E3D8] bg-[#F4F2EB]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-10 mb-10 sm:mb-12">
           
           {/* Col 1: Brand & Archival Mission */}
           <div className="md:col-span-1 space-y-3.5">

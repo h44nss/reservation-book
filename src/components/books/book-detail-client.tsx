@@ -186,7 +186,7 @@ export function BookDetailClient({ id }: { id: string }) {
               )}
             </div>
 
-            <h1 className="font-serif-title text-4xl sm:text-5xl font-normal text-[#18221B] leading-tight">
+            <h1 className="font-serif-title text-2xl sm:text-4xl lg:text-5xl font-normal text-[#18221B] leading-tight">
               {book.title}
             </h1>
 
@@ -202,7 +202,7 @@ export function BookDetailClient({ id }: { id: string }) {
           )}
 
           {/* Action Card */}
-          <div className="p-6 rounded-3xl bg-white border border-[#E5E3D8] shadow-sm space-y-5">
+          <div className="p-4 sm:p-6 rounded-3xl bg-white border border-[#E5E3D8] shadow-sm space-y-5">
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
               <div>
                 <span className="text-[10px] text-[#8A968E] uppercase tracking-widest font-bold block">
@@ -214,17 +214,17 @@ export function BookDetailClient({ id }: { id: string }) {
                       isAvailable ? 'bg-emerald-500' : 'bg-rose-500'
                     }`}
                   />
-                  <span className="text-base font-bold text-[#18221B]">
+                  <span className="text-sm sm:text-base font-bold text-[#18221B]">
                     {isAvailable ? `${available} Buku Dapat Diajukan` : 'Semua Buku Sedang Dipinjam'}
                   </span>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
                 {inTray ? (
                   <button
                     disabled
-                    className="flex-1 sm:flex-none px-5 py-3 rounded-xl bg-[#F4F2EB] text-[#57655B] font-bold text-xs flex items-center justify-center gap-2 cursor-not-allowed border border-[#E5E3D8]"
+                    className="w-full sm:w-auto px-5 py-3 rounded-xl bg-[#F4F2EB] text-[#57655B] font-bold text-xs flex items-center justify-center gap-2 cursor-not-allowed border border-[#E5E3D8]"
                   >
                     <Check className="w-4 h-4 text-emerald-600" />
                     <span>Sudah di Kantong</span>
@@ -233,7 +233,7 @@ export function BookDetailClient({ id }: { id: string }) {
                   <button
                     onClick={handleAdd}
                     disabled={!isAvailable}
-                    className={`flex-1 sm:flex-none px-6 py-3 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-xs ${
+                    className={`w-full sm:w-auto px-6 py-3 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-all shadow-xs ${
                       isAvailable
                         ? justAdded
                           ? 'bg-emerald-700 text-white'
@@ -257,7 +257,7 @@ export function BookDetailClient({ id }: { id: string }) {
 
                 <Link
                   href="/borrow"
-                  className="px-5 py-3 rounded-xl bg-[#F4F2EB] hover:bg-[#EAE7DC] border border-[#E5E3D8] text-[#18221B] font-semibold text-xs transition-colors shrink-0 text-center"
+                  className="w-full sm:w-auto px-5 py-3 rounded-xl bg-[#F4F2EB] hover:bg-[#EAE7DC] border border-[#E5E3D8] text-[#18221B] font-semibold text-xs transition-colors text-center"
                 >
                   Ajukan Pinjam
                 </Link>
@@ -328,7 +328,7 @@ export function BookDetailClient({ id }: { id: string }) {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 min-[420px]:grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {relatedBooks.map((relBook) => (
               <BookCard3D key={relBook.id} book={relBook} />
             ))}

@@ -65,32 +65,32 @@ export default function HomePage() {
         <section className="pt-4 sm:pt-10">
           
           {/* Curated Archive Plaque */}
-          <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white border border-[#E5E3D8] text-xs text-[#57655B] mb-8 shadow-xs">
+          <div className="flex flex-wrap sm:inline-flex items-center gap-2 sm:gap-2.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-2xl sm:rounded-full bg-white border border-[#E5E3D8] text-[11px] sm:text-xs text-[#57655B] mb-6 sm:mb-8 shadow-xs">
             <SiteLogoMark size={20} />
             <span className="font-extrabold uppercase tracking-wider text-[#132E20] text-[10px]">
               KATALOG FISIK RESMI:
             </span>
             <span className="font-semibold text-[#18221B]">{totalAvailableBooks} Eksemplar Tersedia</span>
-            <span className="text-[#D2CEC0]">•</span>
-            <span>{totalBorrowedBooks} Sedang Dipinjam</span>
+            <span className="text-[#D2CEC0] hidden xs:inline">•</span>
+            <span className="hidden xs:inline">{totalBorrowedBooks} Sedang Dipinjam</span>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             
             {/* Left Column: Literary Typography & Search */}
-            <div className="lg:col-span-7 space-y-7">
-              <div className="space-y-4">
-                <span className="text-xs font-bold tracking-widest uppercase text-[#C25E38] block">
+            <div className="lg:col-span-7 space-y-6 sm:space-y-7">
+              <div className="space-y-3 sm:space-y-4">
+                <span className="text-[11px] sm:text-xs font-bold tracking-widest uppercase text-[#C25E38] block">
                   KURASI LITERASI KONTEMPORER
                 </span>
-                <h1 className="font-serif-title text-4xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-[#18221B] leading-[1.08]">
+                <h1 className="font-serif-title text-3xl sm:text-5xl lg:text-7xl font-normal tracking-tight text-[#18221B] leading-[1.12]">
                   Koleksi Pilihan untuk Jiwa yang{' '}
                   <span className="italic text-[#132E20] font-serif underline decoration-[#C25E38]/30 decoration-wavy decoration-1 underline-offset-8">
                     Mengembara.
                   </span>
                 </h1>
                 
-                <p className="text-base sm:text-lg text-[#57655B] leading-relaxed max-w-xl font-normal pt-1">
+                <p className="text-sm sm:text-base lg:text-lg text-[#57655B] leading-relaxed max-w-xl font-normal pt-1">
                   Ruang literasi modern dengan karya sastra, filsafat, rekayasa teknologi, dan sains.
                   Pinjam buku fisik langsung tanpa registrasi akun yang berbelit.
                 </p>
@@ -99,43 +99,44 @@ export default function HomePage() {
               {/* Editorial Search Deck */}
               <form
                 onSubmit={handleSearchSubmit}
-                className="relative max-w-xl flex items-center p-2 rounded-2xl bg-white border border-[#D2CEC0] shadow-sm focus-within:border-[#132E20] focus-within:ring-2 focus-within:ring-[#132E20]/10 transition-all"
+                className="relative max-w-xl flex items-center p-1.5 sm:p-2 rounded-2xl bg-white border border-[#D2CEC0] shadow-sm focus-within:border-[#132E20] focus-within:ring-2 focus-within:ring-[#132E20]/10 transition-all"
               >
-                <Search className="w-5 h-5 text-[#8A968E] ml-3 shrink-0" />
+                <Search className="w-4 sm:w-5 h-4 sm:h-5 text-[#8A968E] ml-2 sm:ml-3 shrink-0" />
                 <input
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Cari judul buku, penulis sastra, atau topik sains..."
-                  className="w-full bg-transparent px-3 py-2 text-sm text-[#18221B] placeholder-[#8A968E] focus:outline-none"
+                  placeholder="Cari judul buku, sastra, atau topik sains..."
+                  className="w-full bg-transparent px-2.5 sm:px-3 py-2 text-xs sm:text-sm text-[#18221B] placeholder-[#8A968E] focus:outline-none"
                 />
                 <button
                   type="submit"
-                  className="px-5 py-2.5 rounded-xl bg-[#132E20] hover:bg-[#0D2016] text-white font-semibold text-xs flex items-center gap-1.5 transition-colors shrink-0 shadow-xs active:scale-95"
+                  className="px-3.5 sm:px-5 py-2.5 rounded-xl bg-[#132E20] hover:bg-[#0D2016] text-white font-semibold text-xs flex items-center gap-1.5 transition-colors shrink-0 shadow-xs active:scale-95"
                 >
-                  <span>Cari Buku</span>
-                  <ArrowRight className="w-4 h-4 text-emerald-300" />
+                  <span>Cari</span>
+                  <span className="hidden sm:inline">Buku</span>
+                  <ArrowRight className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-emerald-300" />
                 </button>
               </form>
 
-              {/* Category Pills Strip */}
-              <div className="flex flex-wrap items-center gap-2 pt-1">
-                <span className="text-xs text-[#8A968E] font-medium mr-1">Eksplorasi Rak:</span>
+              {/* Category Pills Strip - Mobile Swipeable */}
+              <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap pt-1">
+                <span className="text-xs text-[#8A968E] font-medium mr-1 shrink-0">Eksplorasi:</span>
                 <button
                   onClick={() => setActiveCategory('all')}
-                  className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all ${
+                  className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold shrink-0 transition-all ${
                     activeCategory === 'all'
                       ? 'bg-[#132E20] text-white shadow-xs'
                       : 'bg-white text-[#57655B] border border-[#E5E3D8] hover:border-[#D2CEC0]'
                   }`}
                 >
-                  Semua Koleksi ({books.length})
+                  Semua ({books.length})
                 </button>
                 {categories.map((cat) => (
                   <button
                     key={cat.id}
                     onClick={() => setActiveCategory(cat.id)}
-                    className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all ${
+                    className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold shrink-0 transition-all ${
                       activeCategory === cat.id
                         ? 'bg-[#132E20] text-white shadow-xs'
                         : 'bg-white text-[#57655B] border border-[#E5E3D8] hover:border-[#D2CEC0]'
@@ -238,7 +239,7 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 min-[420px]:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
             {filteredFeaturedBooks.map((book) => (
               <BookCard3D key={book.id} book={book} />
             ))}
@@ -246,12 +247,12 @@ export default function HomePage() {
         </section>
 
         {/* ARCHIVAL CIRCULATION GUIDE (ANTI-SLOP REDESIGN) */}
-        <section className="p-8 sm:p-12 rounded-3xl bg-white border border-[#E5E3D8] shadow-sm space-y-10">
+        <section className="p-5 sm:p-12 rounded-3xl bg-white border border-[#E5E3D8] shadow-sm space-y-8 sm:space-y-10">
           <div className="max-w-2xl space-y-2">
             <span className="text-xs font-bold text-[#C25E38] uppercase tracking-widest">
               SISTEM SIRKULASI DIGITAL
             </span>
-            <h2 className="font-serif-title text-3xl sm:text-4xl text-[#18221B] font-normal">
+            <h2 className="font-serif-title text-2xl sm:text-4xl text-[#18221B] font-normal">
               Peminjaman Tanpa Registrasi Rumit
             </h2>
             <p className="text-xs sm:text-sm text-[#57655B] leading-relaxed">

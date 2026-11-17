@@ -141,13 +141,13 @@ export function BookCard3D({ book, viewMode = 'grid' }: BookCardProps) {
   }
 
   return (
-    <div className="group relative flex flex-col rounded-2xl bg-white border border-[#E5E3D8] hover:border-[#132E20]/30 p-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5">
+    <div className="group relative flex flex-col rounded-2xl bg-white border border-[#E5E3D8] hover:border-[#132E20]/30 p-3 sm:p-4 transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5">
       
       {/* Ribbon Bookmark Badge */}
       {book.badge && (
-        <div className="absolute -top-1.5 right-5 z-20">
+        <div className="absolute -top-1.5 right-4 sm:right-5 z-20">
           <div
-            className={`px-2.5 pt-1.5 pb-2 text-[9px] font-extrabold uppercase tracking-wider bookmark-ribbon shadow-sm flex items-center gap-1 ${getBadgeStyle(
+            className={`px-2 sm:px-2.5 pt-1.5 pb-2 text-[8px] sm:text-[9px] font-extrabold uppercase tracking-wider bookmark-ribbon shadow-sm flex items-center gap-1 ${getBadgeStyle(
               book.badge
             )}`}
           >
@@ -159,7 +159,7 @@ export function BookCard3D({ book, viewMode = 'grid' }: BookCardProps) {
       {/* Book Cover Container with Spine Shader */}
       <Link
         href={`/books/${book.id}`}
-        className="relative aspect-[3/4] w-full rounded-xl overflow-hidden mb-3.5 block border border-[#E5E3D8] book-spine-effect group-hover:shadow-md transition-shadow bg-[#F4F2EB]"
+        className="relative aspect-[3/4] w-full rounded-xl overflow-hidden mb-3 block border border-[#E5E3D8] book-spine-effect group-hover:shadow-md transition-shadow bg-[#F4F2EB]"
       >
         <BookCover
           src={book.cover_image}
@@ -169,8 +169,8 @@ export function BookCard3D({ book, viewMode = 'grid' }: BookCardProps) {
         />
 
         {/* Category Pill Tag */}
-        <div className="absolute bottom-2.5 left-2.5 z-10">
-          <span className="px-2.5 py-1 rounded-md bg-white/95 backdrop-blur-md text-[10px] font-bold text-[#18221B] shadow-xs border border-white/60 tracking-wider uppercase">
+        <div className="absolute bottom-2 left-2 sm:bottom-2.5 sm:left-2.5 z-10">
+          <span className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md bg-white/95 backdrop-blur-md text-[9px] sm:text-[10px] font-bold text-[#18221B] shadow-xs border border-white/60 tracking-wider uppercase">
             {book.category_name}
           </span>
         </div>
@@ -178,25 +178,25 @@ export function BookCard3D({ book, viewMode = 'grid' }: BookCardProps) {
 
       {/* Book Metadata */}
       <div className="flex flex-col flex-grow">
-        <div className="flex items-center justify-between text-[11px] text-[#8A968E] font-medium mb-1">
-          <span className="truncate max-w-[140px]">{book.publisher}</span>
+        <div className="flex items-center justify-between text-[10px] sm:text-[11px] text-[#8A968E] font-medium mb-1">
+          <span className="truncate max-w-[100px] sm:max-w-[140px]">{book.publisher}</span>
           <span className="font-mono-code">{book.publication_year}</span>
         </div>
 
         <Link
           href={`/books/${book.id}`}
-          className="font-bold text-sm text-[#18221B] group-hover:text-[#132E20] line-clamp-1 transition-colors mb-0.5 tracking-tight"
+          className="font-bold text-xs sm:text-sm text-[#18221B] group-hover:text-[#132E20] line-clamp-1 transition-colors mb-0.5 tracking-tight"
           title={book.title}
         >
           {book.title}
         </Link>
-        <p className="text-xs text-[#57655B] line-clamp-1 mb-3.5">{book.author}</p>
+        <p className="text-[11px] sm:text-xs text-[#57655B] line-clamp-1 mb-3">{book.author}</p>
 
         {/* Availability Strip & Borrow Action */}
-        <div className="mt-auto pt-3 border-t border-[#F0EEE6] flex items-center justify-between gap-2">
-          <div className="flex items-center gap-1.5">
+        <div className="mt-auto pt-2.5 sm:pt-3 border-t border-[#F0EEE6] flex items-center justify-between gap-1 sm:gap-2">
+          <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
             <span
-              className={`w-2 h-2 rounded-full ${
+              className={`w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full ${
                 availableStock > 1
                   ? 'bg-emerald-500'
                   : availableStock === 1
@@ -205,7 +205,7 @@ export function BookCard3D({ book, viewMode = 'grid' }: BookCardProps) {
               }`}
             />
             <span
-              className={`text-[11px] font-bold ${
+              className={`text-[10px] sm:text-[11px] font-bold ${
                 availableStock > 1
                   ? 'text-emerald-800'
                   : availableStock === 1
@@ -224,7 +224,7 @@ export function BookCard3D({ book, viewMode = 'grid' }: BookCardProps) {
           <button
             onClick={handleAdd}
             disabled={!isAvailable || inTray}
-            className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1 ${
+            className={`px-2.5 sm:px-3 py-1.5 rounded-xl text-[11px] sm:text-xs font-semibold transition-all flex items-center gap-1 shrink-0 ${
               inTray
                 ? 'bg-[#F4F2EB] text-[#57655B] cursor-not-allowed border border-[#E5E3D8]'
                 : !isAvailable

@@ -69,7 +69,7 @@ function CatalogContent() {
           <span className="text-xs font-bold tracking-widest uppercase text-[#C25E38]">
             ARSIP BUKU FISIK
           </span>
-          <h1 className="font-serif-title text-3xl sm:text-5xl font-normal text-[#18221B] mt-1">
+          <h1 className="font-serif-title text-2xl sm:text-4xl lg:text-5xl font-normal text-[#18221B] mt-1">
             Katalog Koleksi Perpustakaan
           </h1>
           <p className="text-xs sm:text-sm text-[#57655B] mt-1.5 font-normal">
@@ -105,17 +105,17 @@ function CatalogContent() {
       </div>
 
       {/* Control & Filter Deck */}
-      <div className="p-5 sm:p-6 rounded-3xl bg-white border border-[#E5E3D8] shadow-xs space-y-4">
+      <div className="p-4 sm:p-6 rounded-3xl bg-white border border-[#E5E3D8] shadow-xs space-y-4">
         
         {/* Search bar & Sorting */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-          <div className="md:col-span-8 relative">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-3 sm:gap-4">
+          <div className="md:col-span-7 lg:col-span-8 relative">
             <Search className="w-4 h-4 text-[#8A968E] absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Cari berdasarkan judul, penulis sastra, penerbit, atau ISBN..."
+              placeholder="Cari berdasarkan judul, penulis, penerbit, atau ISBN..."
               className="w-full pl-10 pr-12 py-2.5 rounded-xl bg-[#F8F7F2] border border-[#E5E3D8] text-[#18221B] placeholder-[#8A968E] text-xs sm:text-sm focus:outline-none focus:border-[#132E20] focus:bg-white transition-all"
             />
             {search && (
@@ -128,20 +128,20 @@ function CatalogContent() {
             )}
           </div>
 
-          <div className="md:col-span-4 flex items-center gap-2">
+          <div className="md:col-span-5 lg:col-span-4 flex items-center gap-2">
             <select
               value={sortBy}
               onChange={(e: any) => setSortBy(e.target.value)}
-              className="w-full py-2.5 px-3 rounded-xl bg-[#F8F7F2] border border-[#E5E3D8] text-[#18221B] text-xs font-medium focus:outline-none focus:border-[#132E20]"
+              className="flex-1 py-2.5 px-3 rounded-xl bg-[#F8F7F2] border border-[#E5E3D8] text-[#18221B] text-xs font-medium focus:outline-none focus:border-[#132E20]"
             >
-              <option value="latest">Urutan: Tahun Rilis</option>
+              <option value="latest">Urutan: Tahun</option>
               <option value="title">Urutan: Judul (A-Z)</option>
-              <option value="stock">Urutan: Stok Terbanyak</option>
+              <option value="stock">Urutan: Stok</option>
             </select>
 
             <button
               onClick={() => setOnlyAvailable(!onlyAvailable)}
-              className={`px-3.5 py-2.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all border ${
+              className={`px-3 sm:px-3.5 py-2.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all border shrink-0 ${
                 onlyAvailable
                   ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
                   : 'bg-[#F8F7F2] text-[#57655B] border-[#E5E3D8] hover:bg-[#EAE7DC]'
@@ -152,8 +152,8 @@ function CatalogContent() {
           </div>
         </div>
 
-        {/* Category Filter Pills */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-1">
+        {/* Category Filter Pills - Mobile Horizontal Scroll */}
+        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1 -mx-2 px-2 sm:mx-0 sm:px-0">
           <button
             onClick={() => setSelectedCategory('all')}
             className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold shrink-0 transition-all ${
@@ -205,7 +205,7 @@ function CatalogContent() {
           </button>
         </div>
       ) : viewMode === 'grid' ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 min-[420px]:grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
           {filteredBooks.map((book) => (
             <BookCard3D key={book.id} book={book} />
           ))}

@@ -111,21 +111,21 @@ export function CyberTicket({ request }: CyberTicketProps) {
       </div>
 
       {/* Body */}
-      <div className="p-6 sm:p-8 space-y-6">
+      <div className="p-4 sm:p-8 space-y-5 sm:space-y-6">
         
         {/* Tracking Code & Status Box */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 rounded-2xl bg-[#F8F7F2] border border-[#E5E3D8]">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 sm:p-5 rounded-2xl bg-[#F8F7F2] border border-[#E5E3D8]">
           <div>
             <span className="text-[10px] font-bold text-[#8A968E] uppercase tracking-widest block">
               KODE TIKET PELACAKAN
             </span>
-            <div className="flex items-center gap-3 mt-1.5">
-              <span className="text-2xl sm:text-3xl font-black font-mono-code tracking-wider text-[#132E20]">
+            <div className="flex items-center gap-2.5 sm:gap-3 mt-1.5">
+              <span className="text-xl sm:text-3xl font-black font-mono-code tracking-wider text-[#132E20] break-all sm:break-normal">
                 {request.request_code}
               </span>
               <button
                 onClick={copyCode}
-                className="px-2.5 py-1.5 rounded-lg bg-white hover:bg-[#EAE7DC] text-[#18221B] border border-[#E5E3D8] text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs"
+                className="px-2.5 py-1.5 rounded-lg bg-white hover:bg-[#EAE7DC] text-[#18221B] border border-[#E5E3D8] text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs shrink-0"
                 title="Salin Kode Tracking"
               >
                 {copied ? (
@@ -159,14 +159,14 @@ export function CyberTicket({ request }: CyberTicketProps) {
         {/* Progress Stepper */}
         {request.status !== 'Rejected' && (
           <div className="py-2">
-            <div className="grid grid-cols-4 gap-2 relative">
+            <div className="grid grid-cols-4 gap-1.5 sm:gap-2 relative">
               {steps.map((step, idx) => {
                 const isPassed = idx <= statusConfig.stepIndex;
                 const isCurrent = idx === statusConfig.stepIndex;
                 return (
                   <div key={step.label} className="flex flex-col items-center text-center">
                     <div
-                      className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold mb-1.5 transition-all font-mono-code ${
+                      className={`w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-[11px] sm:text-xs font-bold mb-1 sm:mb-1.5 transition-all font-mono-code ${
                         isCurrent
                           ? 'bg-[#132E20] text-white ring-4 ring-emerald-100'
                           : isPassed
@@ -177,7 +177,7 @@ export function CyberTicket({ request }: CyberTicketProps) {
                       {idx + 1}
                     </div>
                     <span
-                      className={`text-xs font-semibold ${
+                      className={`text-[10px] sm:text-xs font-semibold leading-tight ${
                         isPassed ? 'text-[#18221B]' : 'text-[#8A968E]'
                       }`}
                     >
@@ -275,19 +275,19 @@ export function CyberTicket({ request }: CyberTicketProps) {
         )}
 
         {/* Authentic Barcode Strip */}
-        <div className="pt-5 border-t border-dashed border-[#E5E3D8] flex flex-col items-center justify-center space-y-2">
-          <div className="flex items-center gap-[3px] h-10 w-full justify-center max-w-xs opacity-80">
+        <div className="pt-5 border-t border-dashed border-[#E5E3D8] flex flex-col items-center justify-center space-y-2 overflow-hidden w-full">
+          <div className="flex items-center gap-[2px] sm:gap-[3px] h-9 sm:h-10 w-full justify-center max-w-full overflow-hidden opacity-80">
             {[3, 2, 4, 1, 3, 5, 2, 4, 1, 4, 2, 3, 4, 1, 3, 2, 5, 3, 1, 4, 3, 2, 3, 5, 1, 3].map(
               (weight, i) => (
                 <div
                   key={i}
-                  className="bg-[#18221B] rounded-[1px] h-full"
-                  style={{ width: `${weight}px` }}
+                  className="bg-[#18221B] rounded-[1px] h-full shrink-0"
+                  style={{ width: `${Math.max(1, weight * 0.8)}px` }}
                 />
               )
             )}
           </div>
-          <span className="font-mono-code text-xs tracking-widest text-[#8A968E]">
+          <span className="font-mono-code text-[11px] sm:text-xs tracking-widest text-[#8A968E]">
             *{request.request_code}*
           </span>
         </div>

@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useLibrary, getAvailableStock } from '@/context/library-context';
 import { BookCover } from '@/components/ui/book-cover';
+import { SiteLogoMark } from '@/components/ui/site-logo';
 import { X, Trash2, ArrowRight, BookOpen } from 'lucide-react';
 
 interface BorrowTrayDrawerProps {
@@ -24,20 +25,18 @@ export function BorrowTrayDrawer({ isOpen, onClose }: BorrowTrayDrawerProps) {
         className="absolute inset-0 bg-[#132E20]/40 backdrop-blur-xs transition-opacity"
       />
 
-      <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
+      <div className="fixed inset-y-0 right-0 max-w-full flex pl-4 sm:pl-10">
         <div className="w-screen max-w-md bg-[#F8F7F2] border-l border-[#E5E3D8] shadow-2xl flex flex-col justify-between">
           
           {/* Drawer Header */}
-          <div className="p-6 border-b border-[#E5E3D8] bg-white flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-[#132E20] flex items-center justify-center text-white shadow-xs">
-                <BookOpen className="w-5 h-5 text-emerald-300" />
-              </div>
+          <div className="p-4 sm:p-6 border-b border-[#E5E3D8] bg-white flex items-center justify-between">
+            <div className="flex items-center gap-2.5 sm:gap-3">
+              <SiteLogoMark size={32} />
               <div>
-                <h3 className="font-serif-title font-normal text-xl text-[#18221B]">
+                <h3 className="font-serif-title font-normal text-lg sm:text-xl text-[#18221B]">
                   Kantong Peminjaman
                 </h3>
-                <p className="text-xs text-[#57655B]">
+                <p className="text-[11px] sm:text-xs text-[#57655B]">
                   {borrowTray.length} dari {siteSettings.max_books_per_loan} kuota buku terisi
                 </p>
               </div>
@@ -52,7 +51,7 @@ export function BorrowTrayDrawer({ isOpen, onClose }: BorrowTrayDrawerProps) {
           </div>
 
           {/* Book List Content */}
-          <div className="flex-1 overflow-y-auto p-6 space-y-4">
+          <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4">
             {borrowTray.length === 0 ? (
               <div className="h-full flex flex-col items-center justify-center text-center p-6 text-[#57655B] space-y-3">
                 <div className="w-16 h-16 rounded-2xl bg-white border border-[#E5E3D8] flex items-center justify-center text-[#8A968E] shadow-xs">
@@ -145,7 +144,7 @@ export function BorrowTrayDrawer({ isOpen, onClose }: BorrowTrayDrawerProps) {
 
           {/* Drawer Footer Actions */}
           {borrowTray.length > 0 && (
-            <div className="p-6 border-t border-[#E5E3D8] bg-white space-y-3">
+            <div className="p-4 sm:p-6 border-t border-[#E5E3D8] bg-white space-y-2.5">
               <Link
                 href="/borrow"
                 onClick={onClose}

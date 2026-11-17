@@ -51,11 +51,11 @@ export default function ServicesPage() {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {services.map((service) => (
             <div
               key={service.id}
-              className="p-8 rounded-3xl bg-white border border-[#E5E3D8] hover:shadow-lg transition-all space-y-5"
+              className="p-5 sm:p-8 rounded-3xl bg-white border border-[#E5E3D8] hover:shadow-lg transition-all space-y-5"
             >
               <div className="flex items-center justify-between">
                 <div className="w-12 h-12 rounded-2xl bg-[#F8F7F2] border border-[#E5E3D8] flex items-center justify-center">
@@ -91,7 +91,7 @@ export default function ServicesPage() {
         </div>
 
         {/* Operational Hours Banner */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-white border border-[#E5E3D8] flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
+        <div className="p-5 sm:p-10 rounded-3xl bg-white border border-[#E5E3D8] flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
           <div className="space-y-1.5 text-center md:text-left">
             <h3 className="font-serif-title text-2xl font-normal text-[#18221B]">
               Kunjungi Perpustakaan Kami Langsung

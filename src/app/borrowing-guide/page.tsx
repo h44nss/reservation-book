@@ -123,24 +123,24 @@ export default function BorrowingGuidePage() {
         </div>
 
         {/* Step by Step Timeline */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-white border border-[#E5E3D8] space-y-8 shadow-xs">
+        <div className="p-5 sm:p-12 rounded-3xl bg-white border border-[#E5E3D8] space-y-6 sm:space-y-8 shadow-xs">
           <div className="max-w-xl space-y-1 pb-2 border-b border-[#E5E3D8]">
             <span className="text-xs font-bold text-[#C25E38] uppercase tracking-widest">
               ALUR LENGKAP
             </span>
-            <h2 className="font-serif-title text-3xl font-normal text-[#18221B]">
+            <h2 className="font-serif-title text-2xl sm:text-3xl font-normal text-[#18221B]">
               5 Tahap Sirkulasi Peminjaman
             </h2>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-5 sm:space-y-6">
             {steps.map((st) => (
-              <div key={st.step} className="flex items-start gap-4 sm:gap-6">
-                <div className="w-10 h-10 rounded-2xl bg-[#132E20] text-white flex items-center justify-center font-bold text-sm font-mono-code shrink-0 shadow-xs">
+              <div key={st.step} className="flex items-start gap-3.5 sm:gap-6">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-[#132E20] text-white flex items-center justify-center font-bold text-xs sm:text-sm font-mono-code shrink-0 shadow-xs">
                   {st.step}
                 </div>
-                <div className="space-y-1 flex-1 pb-6 border-b border-[#F0EEE6] last:border-b-0">
-                  <h4 className="font-bold text-[#18221B] text-base">{st.title}</h4>
+                <div className="space-y-1 flex-1 pb-5 sm:pb-6 border-b border-[#F0EEE6] last:border-b-0">
+                  <h4 className="font-bold text-[#18221B] text-sm sm:text-base">{st.title}</h4>
                   <p className="text-xs sm:text-sm text-[#57655B] leading-relaxed">{st.desc}</p>
                 </div>
               </div>
@@ -154,16 +154,16 @@ export default function BorrowingGuidePage() {
             <span className="text-xs font-bold text-[#C25E38] uppercase tracking-widest">
               PERTANYAAN UMUM
             </span>
-            <h2 className="font-serif-title text-3xl font-normal text-[#18221B]">
+            <h2 className="font-serif-title text-2xl sm:text-3xl font-normal text-[#18221B]">
               Pertanyaan yang Sering Diajukan
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {faqs.map((faq, i) => (
               <div
                 key={i}
-                className="p-6 sm:p-7 rounded-3xl bg-white border border-[#E5E3D8] space-y-2.5 shadow-xs"
+                className="p-5 sm:p-7 rounded-3xl bg-white border border-[#E5E3D8] space-y-2.5 shadow-xs"
               >
                 <h4 className="font-bold text-[#18221B] text-sm flex items-start gap-2.5">
                   <HelpCircle className="w-4 h-4 text-[#132E20] shrink-0 mt-0.5" />
@@ -176,7 +176,7 @@ export default function BorrowingGuidePage() {
         </div>
 
         {/* CTA Banner */}
-        <div className="p-8 sm:p-12 rounded-3xl bg-[#132E20] text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md">
+        <div className="p-6 sm:p-12 rounded-3xl bg-[#132E20] text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md">
           <div className="space-y-1.5 text-center sm:text-left">
             <h3 className="font-serif-title font-normal text-2xl sm:text-3xl text-white">
               Siap Membawa Pulang Bacaan Favorit?
